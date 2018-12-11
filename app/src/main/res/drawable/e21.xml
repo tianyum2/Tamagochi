@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/eat211"
+        android:duration="400"/>
+    <item android:drawable="@drawable/eat212"
+        android:duration="400"/>
+
+</animation-list>

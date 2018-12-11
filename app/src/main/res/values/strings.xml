@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="title_activity_act2">act2</string>
+    <string name="back">Back</string>
+    <string name="button">Button</string>
+    <string name="button2">Button</string>
+    <string name="play">play</string>
+    <string name="cake11">cake11</string>
+    <string name="poop">poop</string>
+    <string name="hp">HP</string>
+    <string name="fun">FUN</string>
+
+    <string name="title_activity_eat11">eat11</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="play11">play11</string>
+    <string name="play22">play22</string>
+    <string name="play21">play21</string>
+    <string name="eat11">eat11</string>
+    <string name="eat22">eat22</string>
+    <string name="eat21">eat21</string>
+    <string name="eat12">eat12</string>
+    <string name="play12">play12</string>
+    <string name="txthp">HP</string>
+    <string name="txthp12">HP12</string>
+    <string name="txthp22">HP22</string>
+    <string name="txtfun">FUN</string>
+    <string name="txtfun12">FUN12</string>
+    <string name="txtfun22">FUN22</string>
+    <string name="txthp21">HP21</string>
+    <string name="txtfun21">FUN21</string>
+
+
+</resources>
