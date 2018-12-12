@@ -2,6 +2,7 @@ package com.example.a2.tamagochi;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ public class ActivityForLeftEgg extends AppCompatActivity {
     Button nextstage, eat11, play11;
     ImageView b11, Hp, Fun, food, evolveiv;
     CountDownTimer timer1, timer2;
+    MediaPlayer ev;
 
     private int cFood = 0;
     private int cFun = 0;
@@ -49,6 +51,8 @@ public class ActivityForLeftEgg extends AppCompatActivity {
         nextstage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ev = MediaPlayer.create(ActivityForLeftEgg.this,R.raw.evolvebgm);
+                ev.start();
                 startActivity(new Intent(ActivityForLeftEgg.this, LeftEggSecondStage.class));
             }
         });
@@ -73,6 +77,7 @@ public class ActivityForLeftEgg extends AppCompatActivity {
         eat11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                eat11.setVisibility(View.INVISIBLE);
                 cFood++;
                 b11.setImageResource(R.drawable.eat11);
                 AnimationDrawable eat11 = (AnimationDrawable) b11.getDrawable();
@@ -105,6 +110,7 @@ public class ActivityForLeftEgg extends AppCompatActivity {
     }
     public void startTimerEat() {
         food = (ImageView) findViewById(R.id.food);
+        eat11 = (Button) findViewById(R.id.eat11);
         Hp = (ImageView) findViewById(R.id.Hp);
         timer1 = new CountDownTimer(2700, 1000) {
             @Override
@@ -113,6 +119,7 @@ public class ActivityForLeftEgg extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                eat11.setVisibility(View.VISIBLE);
                 b11.setImageResource(R.drawable.basic11);
                 AnimationDrawable basic11 = (AnimationDrawable) b11.getDrawable();
                 basic11.start();
@@ -133,6 +140,7 @@ public class ActivityForLeftEgg extends AppCompatActivity {
     }
     public void startTimerPlay() {
         Fun = (ImageView) findViewById(R.id.Fun);
+        play11 = (Button) findViewById(R.id.play11);
         timer1 = new CountDownTimer(3000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -140,6 +148,7 @@ public class ActivityForLeftEgg extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                play11.setVisibility(View.VISIBLE);
                 b11.setImageResource(R.drawable.basic11);
                 AnimationDrawable basic11 = (AnimationDrawable) b11.getDrawable();
                 basic11.start();
@@ -162,6 +171,7 @@ public class ActivityForLeftEgg extends AppCompatActivity {
         play11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                play11.setVisibility(View.INVISIBLE);
                 cFun++;
                 b11.setImageResource(R.drawable.p11);
                 AnimationDrawable p11 = (AnimationDrawable) b11.getDrawable();

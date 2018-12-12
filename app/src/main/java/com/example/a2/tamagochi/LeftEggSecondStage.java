@@ -2,6 +2,7 @@ package com.example.a2.tamagochi;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ public class LeftEggSecondStage extends AppCompatActivity {
     CountDownTimer timer1, timer2;
     private int cFood = 0;
     private int cFun = 0;
+    MediaPlayer ev;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,8 @@ public class LeftEggSecondStage extends AppCompatActivity {
         nextstage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ev = MediaPlayer.create(LeftEggSecondStage.this,R.raw.evolvebgm);
+                ev.start();
                 startActivity(new Intent(LeftEggSecondStage.this, LeftEggThirdStage.class));
             }
         });
@@ -61,6 +65,7 @@ public class LeftEggSecondStage extends AppCompatActivity {
         eat12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                eat12.setVisibility(View.INVISIBLE);
                 cFood++;
                 b12.setImageResource(R.drawable.eat12);
                 AnimationDrawable eat12 = (AnimationDrawable) b12.getDrawable();
@@ -93,6 +98,7 @@ public class LeftEggSecondStage extends AppCompatActivity {
     }
     public void startTimerEat() {
         Hp = (ImageView) findViewById(R.id.Hp);
+        eat12 = (Button) findViewById(R.id.eat12);
         timer1 = new CountDownTimer(2700, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -100,6 +106,7 @@ public class LeftEggSecondStage extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                eat12.setVisibility(View.VISIBLE);
                 b12.setImageResource(R.drawable.basic12);
                 AnimationDrawable basic12 = (AnimationDrawable) b12.getDrawable();
                 basic12.start();
@@ -120,6 +127,7 @@ public class LeftEggSecondStage extends AppCompatActivity {
     }
     public void startTimerPlay() {
         Fun = (ImageView) findViewById(R.id.Fun);
+        play12 = (Button) findViewById(R.id.play12);
         timer1 = new CountDownTimer(3000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -127,6 +135,7 @@ public class LeftEggSecondStage extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                play12.setVisibility(View.VISIBLE);
                 b12.setImageResource(R.drawable.basic12);
                 AnimationDrawable basic12 = (AnimationDrawable) b12.getDrawable();
                 basic12.start();
@@ -149,6 +158,7 @@ public class LeftEggSecondStage extends AppCompatActivity {
         play12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                play12.setVisibility(View.INVISIBLE);
                 cFun++;
                 b12.setImageResource(R.drawable.p12);
                 AnimationDrawable p12 = (AnimationDrawable) b12.getDrawable();

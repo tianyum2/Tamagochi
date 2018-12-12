@@ -2,6 +2,7 @@ package com.example.a2.tamagochi;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ public class ActivityForRightEgg extends AppCompatActivity {
     Button nextstage, eat21, play21;
     ImageView b21, Hp, Fun, food, evolveiv;
     CountDownTimer timer1, timer2;
+    MediaPlayer ev;
     private int cFood = 0;
     private int cFun = 0;
     @Override
@@ -36,6 +38,8 @@ public class ActivityForRightEgg extends AppCompatActivity {
         nextstage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ev = MediaPlayer.create(ActivityForRightEgg.this,R.raw.evolvebgm);
+                ev.start();
                 startActivity(new Intent(ActivityForRightEgg.this, RightEggSecondStage.class));
             }
         });
@@ -60,6 +64,7 @@ public class ActivityForRightEgg extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cFood++;
+                eat21.setVisibility(View.INVISIBLE);
                 b21.setImageResource(R.drawable.e21);
                 AnimationDrawable eat12 = (AnimationDrawable) b21.getDrawable();
                 eat12.start();
@@ -91,6 +96,7 @@ public class ActivityForRightEgg extends AppCompatActivity {
     }
     public void startTimerEat() {
         Hp = (ImageView) findViewById(R.id.Hp);
+        eat21 = (Button) findViewById(R.id.eat21);
         timer1 = new CountDownTimer(2700, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -98,6 +104,7 @@ public class ActivityForRightEgg extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                eat21.setVisibility(View.VISIBLE);
                 b21.setImageResource(R.drawable.basic21);
                 AnimationDrawable basic21 = (AnimationDrawable) b21.getDrawable();
                 basic21.start();
@@ -118,6 +125,7 @@ public class ActivityForRightEgg extends AppCompatActivity {
     }
     public void startTimerPlay() {
         Fun = (ImageView) findViewById(R.id.Fun);
+        play21 = (Button) findViewById(R.id.play21);
         timer1 = new CountDownTimer(3000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -125,6 +133,7 @@ public class ActivityForRightEgg extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                play21.setVisibility(View.VISIBLE);
                 b21.setImageResource(R.drawable.basic21);
                 AnimationDrawable basic21 = (AnimationDrawable) b21.getDrawable();
                 basic21.start();
@@ -148,6 +157,7 @@ public class ActivityForRightEgg extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cFun++;
+                play21.setVisibility(View.INVISIBLE);
                 b21.setImageResource(R.drawable.play21);
                 AnimationDrawable p12 = (AnimationDrawable) b21.getDrawable();
                 p12.start();

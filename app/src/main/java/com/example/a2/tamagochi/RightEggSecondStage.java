@@ -2,6 +2,7 @@ package com.example.a2.tamagochi;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ public class RightEggSecondStage extends AppCompatActivity {
     CountDownTimer timer1, timer2;
     private int cFood = 0;
     private int cFun = 0;
+    MediaPlayer ev;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         eat22 = (Button) findViewById(R.id.eat22);
@@ -36,6 +38,8 @@ public class RightEggSecondStage extends AppCompatActivity {
         nextstage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ev = MediaPlayer.create(RightEggSecondStage.this,R.raw.evolvebgm);
+                ev.start();
                 startActivity(new Intent(RightEggSecondStage.this, RightEggThirdStage.class));
             }
         });
