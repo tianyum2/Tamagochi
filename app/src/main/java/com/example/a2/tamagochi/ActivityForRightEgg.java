@@ -16,7 +16,7 @@ public class ActivityForRightEgg extends AppCompatActivity {
     Button nextstage, eat21, play21;
     ImageView b21, Hp, Fun, food, evolveiv;
     CountDownTimer timer1, timer2;
-    MediaPlayer ev;
+    MediaPlayer ev, song;
     private int cFood = 0;
     private int cFun = 0;
     @Override
@@ -26,6 +26,8 @@ public class ActivityForRightEgg extends AppCompatActivity {
         nextstage = (Button) findViewById(R.id.nextstage);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_for_right_egg);
+        song = MediaPlayer.create(ActivityForRightEgg.this,R.raw.bgm);
+        song.start();
         ImageView b12 = (ImageView) findViewById(R.id.b21);
         AnimationDrawable basic12 = (AnimationDrawable) b12.getDrawable();
         basic12.start();
@@ -38,6 +40,7 @@ public class ActivityForRightEgg extends AppCompatActivity {
         nextstage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                song.release();
                 ev = MediaPlayer.create(ActivityForRightEgg.this,R.raw.evolvebgm);
                 ev.start();
                 startActivity(new Intent(ActivityForRightEgg.this, RightEggSecondStage.class));

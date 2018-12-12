@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         song = MediaPlayer.create(MainActivity.this,R.raw.bgm);
         song.start();
-
         Right();
         Left();
     }
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         toLeftEgg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                song.release();
                 startActivity(new Intent(MainActivity.this, ActivityForLeftEgg.class));
             }
         });
@@ -35,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         toRightEgg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                song.release();
                 startActivity(new Intent(MainActivity.this, ActivityForRightEgg.class));
             }
         });

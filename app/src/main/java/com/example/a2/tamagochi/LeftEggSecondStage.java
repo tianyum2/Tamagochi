@@ -19,7 +19,7 @@ public class LeftEggSecondStage extends AppCompatActivity {
     CountDownTimer timer1, timer2;
     private int cFood = 0;
     private int cFun = 0;
-    MediaPlayer ev;
+    MediaPlayer ev, song;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,8 @@ public class LeftEggSecondStage extends AppCompatActivity {
         nextstage = (Button) findViewById(R.id.nextstage);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_left_egg_second_stage);
+        song = MediaPlayer.create(LeftEggSecondStage.this,R.raw.bgm);
+        song.start();
         ImageView b12 = (ImageView) findViewById(R.id.b12);
         AnimationDrawable basic12 = (AnimationDrawable) b12.getDrawable();
         basic12.start();
@@ -40,6 +42,7 @@ public class LeftEggSecondStage extends AppCompatActivity {
         nextstage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                song.release();
                 ev = MediaPlayer.create(LeftEggSecondStage.this,R.raw.evolvebgm);
                 ev.start();
                 startActivity(new Intent(LeftEggSecondStage.this, LeftEggThirdStage.class));

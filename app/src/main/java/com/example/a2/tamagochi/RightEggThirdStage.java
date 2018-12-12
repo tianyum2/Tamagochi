@@ -20,12 +20,14 @@ public class RightEggThirdStage extends AppCompatActivity implements SensorEvent
     Sensor Accd;
 
     ImageView b23, co;
-    MediaPlayer song1;
+    MediaPlayer song1, song;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_right_egg_third_stage);
+        song = MediaPlayer.create(RightEggThirdStage.this,R.raw.bgm);
+        song.start();
         b23 = (ImageView) findViewById(R.id.b23);
         AnimationDrawable basic23 = (AnimationDrawable) b23.getDrawable();
         basic23.start();
@@ -51,6 +53,7 @@ public class RightEggThirdStage extends AppCompatActivity implements SensorEvent
 
         co = (ImageView) findViewById(R.id.co);
         if (Math.abs(event.values[0] + event.values[1] + event.values[2]) > 20 && s) {
+            song.release();
             song1 = MediaPlayer.create(RightEggThirdStage.this, R.raw.dr_dre);
             song1.start();
             b23.setImageResource(R.drawable.m23);

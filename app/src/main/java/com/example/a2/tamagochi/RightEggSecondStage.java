@@ -18,7 +18,7 @@ public class RightEggSecondStage extends AppCompatActivity {
     CountDownTimer timer1, timer2;
     private int cFood = 0;
     private int cFun = 0;
-    MediaPlayer ev;
+    MediaPlayer ev, song;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         eat22 = (Button) findViewById(R.id.eat22);
@@ -26,6 +26,8 @@ public class RightEggSecondStage extends AppCompatActivity {
         nextstage = (Button) findViewById(R.id.nextstage);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_right_egg_second_stage);
+        song = MediaPlayer.create(RightEggSecondStage.this,R.raw.bgm);
+        song.start();
         ImageView b22 = (ImageView) findViewById(R.id.b22);
         AnimationDrawable basic22 = (AnimationDrawable) b22.getDrawable();
         basic22.start();
@@ -38,6 +40,7 @@ public class RightEggSecondStage extends AppCompatActivity {
         nextstage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                song.release();
                 ev = MediaPlayer.create(RightEggSecondStage.this,R.raw.evolvebgm);
                 ev.start();
                 startActivity(new Intent(RightEggSecondStage.this, RightEggThirdStage.class));
@@ -64,6 +67,7 @@ public class RightEggSecondStage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cFood++;
+                eat22.setVisibility(View.INVISIBLE);
                 b22.setImageResource(R.drawable.e22);
                 AnimationDrawable eat22 = (AnimationDrawable) b22.getDrawable();
                 eat22.start();
@@ -95,6 +99,7 @@ public class RightEggSecondStage extends AppCompatActivity {
     }
     public void startTimerEat() {
         Hp = (ImageView) findViewById(R.id.Hp);
+        eat22 = (Button) findViewById(R.id.eat22);
         timer1 = new CountDownTimer(2700, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -102,6 +107,7 @@ public class RightEggSecondStage extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                eat22.setVisibility(View.VISIBLE);
                 b22.setImageResource(R.drawable.b22);
                 AnimationDrawable basic22 = (AnimationDrawable) b22.getDrawable();
                 basic22.start();
@@ -122,6 +128,7 @@ public class RightEggSecondStage extends AppCompatActivity {
     }
     public void startTimerPlay() {
         Fun = (ImageView) findViewById(R.id.Fun);
+        play22 = (Button) findViewById(R.id.play22);
         timer1 = new CountDownTimer(3000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -129,6 +136,7 @@ public class RightEggSecondStage extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                play22.setVisibility(View.VISIBLE);
                 b22.setImageResource(R.drawable.b22);
                 AnimationDrawable basic22 = (AnimationDrawable) b22.getDrawable();
                 basic22.start();
@@ -152,6 +160,7 @@ public class RightEggSecondStage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cFun++;
+                play22.setVisibility(View.INVISIBLE);
                 b22.setImageResource(R.drawable.p22);
                 AnimationDrawable p12 = (AnimationDrawable) b22.getDrawable();
                 p12.start();
